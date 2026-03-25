@@ -1,6 +1,6 @@
 from langchain_community.embeddings import HuggingFaceEmbeddings
 import ssl
-from langchain_community.vectorstores import LanceDB
+from langchain_community.vectorstores.lancedb import LanceDB 
 import os
 
 ssl._create_default_https_context = ssl._create_unverified_context

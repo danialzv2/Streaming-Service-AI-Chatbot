@@ -1,6 +1,6 @@
 import os
 from langchain_core.documents import Document
-from langchain_community.vectorstores import LanceDB
+from langchain_community.vectorstores.lancedb import LanceDB 
 from langchain_community.embeddings import HuggingFaceEmbeddings
 
 documents = []
