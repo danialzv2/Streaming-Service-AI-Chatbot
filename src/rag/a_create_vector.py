@@ -1,7 +1,7 @@
 import os
 from langchain_ollama import OllamaEmbeddings
 from langchain_core.documents import Document
-from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores import LanceDB
 
 documents = []
 
@@ -22,13 +22,10 @@ embedding_model = OllamaEmbeddings(model="nomic-embed-text")
 
 # Create vector store
 
-vectorstore = Chroma.from_documents(
+vectorstore = LanceDB.from_documents(
     documents=documents,
     embedding=embedding_model,
-    persist_directory="../Tonton RAG Chatbot/vector_store"
+    uri="../Tonton RAG Chatbot/vector_store"
 )
-
-# Save vector store locally
-vectorstore.persist()
 
 print("Vector database saved successfully using Ollama embeddings.")

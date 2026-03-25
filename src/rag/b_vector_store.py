@@ -1,6 +1,6 @@
 from langchain_community.embeddings import HuggingFaceEmbeddings
 import ssl
-from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores import LanceDB
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -17,9 +17,9 @@ def load_vector_store():
 
     embedding_model = load_embedding_model()
 
-    vectorstore = Chroma(
-        persist_directory="vector_store",
-        embedding_function=embedding_model
+    vectorstore = LanceDB.from_uri(
+        uri="vector_store",
+        embedding=embedding_model
     )
 
     return vectorstore
