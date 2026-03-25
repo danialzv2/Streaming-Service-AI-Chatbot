@@ -16,10 +16,10 @@ for file in os.listdir(docs_path):
         documents.append(Document(page_content=text))
 
 # Load local embedding model from Ollama
-embedding_model = OllamaEmbeddings(model="nomic-embed-text")
-# embedding_model = HuggingFaceEmbeddings(
-#     model_name="sentence-transformers/all-MiniLM-L6-v2"
-# )
+# embedding_model = OllamaEmbeddings(model="nomic-embed-text")
+embedding_model = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2"
+)
 
 # Create vector store
 vectorstore = FAISS.from_documents(

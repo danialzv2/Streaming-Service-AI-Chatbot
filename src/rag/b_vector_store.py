@@ -8,10 +8,10 @@ from langchain_ollama import OllamaEmbeddings
 
 def load_embedding_model():
 
-    embedding_model = OllamaEmbeddings(model="nomic-embed-text")
-    # embedding_model = HuggingFaceEmbeddings(
-    # model_name="sentence-transformers/all-MiniLM-L6-v2"
-    # )
+    # embedding_model = OllamaEmbeddings(model="nomic-embed-text")
+    embedding_model = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2"
+    )
 
     return embedding_model
 
