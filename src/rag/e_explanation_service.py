@@ -1,4 +1,4 @@
-from rag.d_rag_chain import build_rag_chain
+from src.rag.d_rag_chain import build_rag_chain
 
 chain, retriever = build_rag_chain()
 

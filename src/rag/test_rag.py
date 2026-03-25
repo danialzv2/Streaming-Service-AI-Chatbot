@@ -1,4 +1,4 @@
-from rag.e_explanation_service import ask_tonton
+from src.rag.e_explanation_service import ask_tonton
 
 while True:
     question = input("\nAsk Tonton Support > ")

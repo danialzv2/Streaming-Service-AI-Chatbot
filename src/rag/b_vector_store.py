@@ -21,7 +21,7 @@ def load_vector_store():
     embedding_model = load_embedding_model()
 
     vectorstore = FAISS.load_local(
-        r"../vector_store",
+        r"../Tonton RAG Chatbot/vector_store",
         embedding_model,
         allow_dangerous_deserialization=True
     )

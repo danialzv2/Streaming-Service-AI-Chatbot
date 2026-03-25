@@ -1,7 +1,7 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from rag.c_retriever import get_retriever
+from src.rag.c_retriever import get_retriever
 from dotenv import load_dotenv
 import os
 
