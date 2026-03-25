@@ -2,6 +2,7 @@ import os
 from langchain_community.vectorstores import FAISS
 from langchain_ollama import OllamaEmbeddings
 from langchain_core.documents import Document
+from langchain_huggingface import HuggingFaceEmbeddings
 
 documents = []
 
@@ -16,6 +17,9 @@ for file in os.listdir(docs_path):
 
 # Load local embedding model from Ollama
 embedding_model = OllamaEmbeddings(model="nomic-embed-text")
+# embedding_model = HuggingFaceEmbeddings(
+#     model_name="sentence-transformers/all-MiniLM-L6-v2"
+# )
 
 # Create vector store
 vectorstore = FAISS.from_documents(
