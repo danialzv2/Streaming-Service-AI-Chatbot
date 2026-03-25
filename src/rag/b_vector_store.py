@@ -4,8 +4,6 @@ from langchain_community.vectorstores import Chroma
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
-from langchain_ollama import OllamaEmbeddings
-
 def load_embedding_model():
 
     # embedding_model = OllamaEmbeddings(model="nomic-embed-text")
