@@ -1,6 +1,8 @@
 import os
+from langchain_ollama import OllamaEmbeddings
 from langchain_core.documents import Document
-from langchain_community.vectorstores.lancedb import LanceDB 
+from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores import LanceDB
 from langchain_community.embeddings import HuggingFaceEmbeddings
 
 documents = []
@@ -15,11 +17,11 @@ for file in os.listdir(docs_path):
         documents.append(Document(page_content=text))
 
 # Load local embedding model from Ollama
-# embedding_model = OllamaEmbeddings(model="nomic-embed-text")
-embedding_model = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2",
-    model_kwargs={"token": os.getenv("HF_TOKEN")}
-)
+embedding_model = OllamaEmbeddings(model="nomic-embed-text")
+# embedding_model = HuggingFaceEmbeddings(
+#     model_name="sentence-transformers/all-MiniLM-L6-v2",
+#     model_kwargs={"token": os.getenv("HF_TOKEN")}
+# )
 # Create vector store
 vectorstore = LanceDB.from_documents(
     documents=documents,

@@ -14,10 +14,10 @@ def load_embedding_model():
 
 
 def load_vector_store():
-    embedding = load_embedding_model()
+    embedding_model = load_embedding_model()
 
     vectorstore = LanceDB(
         uri="vector_store",
-        embedding=embedding
+        embedding=embedding_model
     )
     return vectorstore
