@@ -1,6 +1,7 @@
 from langchain_huggingface import HuggingFaceEmbeddings
 import ssl
 from langchain_community.vectorstores import FAISS
+from langchain_community.vectorstores import Chroma
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -20,10 +21,9 @@ def load_vector_store():
 
     embedding_model = load_embedding_model()
 
-    vectorstore = FAISS.load_local(
-        r"../Tonton RAG Chatbot/vector_store",
-        embedding_model,
-        allow_dangerous_deserialization=True
+    vectorstore = Chroma(
+        persist_directory="vector_store",
+        embedding_function=embedding_model
     )
 
     return vectorstore
