@@ -4,11 +4,10 @@ pip==24.0
 --prefer-binary
 
 # === LangChain Core Framework ===
-langchain==0.1.16
-langchain-core==0.1.45
-langchain-community==0.0.34
-langchain-openai==0.0.8
-langchain-google-genai==0.0.11
+langchain==1.2.13
+langchain-community==1.2.13
+langchain-core==1.2.13
+langchain-google-genai==1.0.2
 
 # LanceDB integration (recommended for Streamlit Cloud)
 lancedb==0.5.7
