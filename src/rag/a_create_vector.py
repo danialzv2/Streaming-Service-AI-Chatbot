@@ -1,8 +1,8 @@
 import os
-from langchain_community.vectorstores import FAISS
 from langchain_ollama import OllamaEmbeddings
 from langchain_core.documents import Document
 from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.vectorstores import Chroma
 
 documents = []
 
@@ -16,18 +16,20 @@ for file in os.listdir(docs_path):
         documents.append(Document(page_content=text))
 
 # Load local embedding model from Ollama
-# embedding_model = OllamaEmbeddings(model="nomic-embed-text")
-embedding_model = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
-)
+embedding_model = OllamaEmbeddings(model="nomic-embed-text")
+# embedding_model = HuggingFaceEmbeddings(
+#     model_name="sentence-transformers/all-MiniLM-L6-v2"
+# )
 
 # Create vector store
-vectorstore = FAISS.from_documents(
-    documents,
-    embedding_model
+
+vectorstore = Chroma.from_documents(
+    documents=documents,
+    embedding=embedding_model,
+    persist_directory="../Tonton RAG Chatbot/vector_store"
 )
 
 # Save vector store locally
-vectorstore.save_local("../Tonton RAG Chatbot/vector_store")
+vectorstore.persist()
 
 print("Vector database saved successfully using Ollama embeddings.")
