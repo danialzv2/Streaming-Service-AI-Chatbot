@@ -17,7 +17,7 @@ def load_vector_store():
     embedding_model = load_embedding_model()
 
     vectorstore = LanceDB(
-        uri="../vector_store",
+        uri="../Tonton RAG Chatbot/vector_store",
         embedding=embedding_model
     )
     return vectorstore
