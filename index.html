@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tonton AI — Your Streaming Assistant</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <button class="new-chat-btn" onclick="newChat()">+ New Chat</button>
+      </div>
+
+      <div class="hist-list" id="histList"></div>
+    </aside>
+
+    <!-- CHAT AREA -->
+    <main class="chat-area">
+
+      <div class="messages" id="messages">
+        <div class="welcome" id="welcome">
+          <h1>TONTON <span>AI</span></h1>
+          <p>Im Your AI Agent Ready to Help To Inquire Regarding Tonton.</p>
+        </div>
+      </div>
+
+      <!-- Suggestions -->
+      <div class="suggestions" id="suggestions">
+        <button class="sug-btn" onclick="sendSuggestion(this)">🔥 Iklan Untuk Langganan Premium</button>
+        <button class="sug-btn" onclick="sendSuggestion(this)">🎬 Cerita Mengenai Pembelajaran</button>
+        <button class="sug-btn" onclick="sendSuggestion(this)">❓ Masalah Tidak Boleh Tonton Selepas Pembayaran</button>
+      </div>
+
+      <!-- Input -->
+      <div class="input-area">
+        <div class="input-box">
+          <input id="chatInput" type="text" placeholder="Ask something..."
+            onkeydown="if(event.key==='Enter') sendMessage()" />
+          <button class="send-btn" id="sendBtn" onclick="sendMessage()">➤</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+
+cd src
+python -m uvicorn api.main:app
+
+handle_parsing_errors=True for handling python_repl_ast issues
+
+1. Improve Document Chunking
+RAG works by splitting documents into smaller pieces before embedding them. If chunks are too large, 
+the model retrieves irrelevant context; if too small, important information is lost. 
+A balanced chunk size (commonly ~400–600 tokens with overlap) helps ensure that each chunk contains enough context while still being searchable.
+Good chunking significantly improves retrieval accuracy.
+
+2. Use Better Embeddings
+Embeddings convert text into vectors for similarity search. If the embedding model is weak, 
+the retriever will pull irrelevant documents even when the correct answer exists in the database. 
+Switching to stronger embedding models (e.g., higher-quality sentence-transformer or OpenAI embeddings) 
+can greatly improve how well queries match relevant knowledge.
+
+3. Tune Retrieval Parameters (Top-K)
+Retrieval systems usually return the top-k most relevant chunks. If k is too small, the correct information might not be included.
+ Increasing it (e.g., from 2 to 5 or 10) allows the LLM to see more context before generating an answer.
+  This improves accuracy but should be balanced to avoid too much irrelevant context.
+
+4. Strengthen the Prompt Template
+The prompt that combines the retrieved context and user question strongly influences the output.
+If the prompt is vague, the model may hallucinate. A better prompt explicitly instructs the model to answer
+only using the provided context and to say “I don’t know” when the information is not present. This reduces incorrect or fabricated answers.
+
+5. Evaluate and Add Test Questions
+To properly tune a RAG system, you should create a small evaluation dataset (questions with known correct answers). 
+By repeatedly testing the system against these questions, you can measure whether changes to chunking, embeddings, 
+or prompts actually improve performance. Without evaluation, improvements are mostly guesswork.
