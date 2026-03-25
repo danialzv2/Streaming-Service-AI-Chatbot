@@ -11,7 +11,7 @@ langchain-openai==0.0.8
 langchain-google-genai==0.0.11
 
 # LanceDB integration (recommended for Streamlit Cloud)
-lancedb==0.3.7
+lancedb==0.3.6
 
 # === Embeddings (No Ollama, No langchain-huggingface wrapper) ===
 sentence-transformers==2.6.0
