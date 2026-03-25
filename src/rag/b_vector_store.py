@@ -1,6 +1,6 @@
 from langchain_community.embeddings import HuggingFaceEmbeddings
 import ssl
-from langchain_chroma import Chroma
+from langchain_community.vectorstores import Chroma
 
 ssl._create_default_https_context = ssl._create_unverified_context
 

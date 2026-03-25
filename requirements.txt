@@ -1,5 +1,6 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
 --prefer-binary
+numpy==1.26.4
 
 # === LangChain Core Framework ===
 langchain==0.1.16
@@ -7,6 +8,7 @@ langchain-core==0.1.45
 langchain-community==0.0.34
 langchain-openai==0.0.8
 langchain-google-genai==0.0.11
+
 
 # Chroma integration
 langchain-chroma==0.1.4
