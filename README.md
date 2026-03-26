@@ -1,6 +1,7 @@
 **This project is a Demo of Retrieval-Augmented Generation (RAG) chatbot using Gemini 2.5 Flash for Tonton**
 
 - The chatbot is designed to answer Tonton customer support questions using ONLY verified internal documents.
+- Product Demo Link: https://tontontv-ai-chatbot.streamlit.app/
 
 Components:
 - Python 3.12
