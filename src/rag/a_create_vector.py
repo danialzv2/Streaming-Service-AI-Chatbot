@@ -17,16 +17,16 @@ for file in os.listdir(docs_path):
         documents.append(Document(page_content=text))
 
 # Load local embedding model from Ollama
-embedding_model = OllamaEmbeddings(model="nomic-embed-text")
-# embedding_model = HuggingFaceEmbeddings(
-#     model_name="sentence-transformers/all-MiniLM-L6-v2",
-#     model_kwargs={"token": os.getenv("HF_TOKEN")}
-# )
+# embedding_model = OllamaEmbeddings(model="nomic-embed-text")
+embedding_model = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2",
+    model_kwargs={"token": os.getenv("HF_TOKEN")}
+)
 # Create vector store
-vectorstore = LanceDB.from_documents(
+vectorstore = FAISS.from_documents(
     documents=documents,
-    embedding=embedding_model,
-    uri="../Tonton RAG Chatbot/vector_store"
+    embedding=embedding_model
 )
 
-print("Vector database saved successfully using Ollama embeddings.")
+# Save the FAISS index locally
+vectorstore.save_local("vector_store")

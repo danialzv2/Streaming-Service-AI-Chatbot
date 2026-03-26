@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 # =========================
-# CUSTOM CSS (from your CSS)
+# CUSTOM CSS 
 # =========================
 st.markdown("""
 <style>
@@ -60,7 +60,7 @@ body {
 """, unsafe_allow_html=True)
 
 # =========================
-# SESSION STATE (your JS memory replacement)
+# SESSION STATE 
 # =========================
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -69,7 +69,7 @@ if "is_loading" not in st.session_state:
     st.session_state.is_loading = False
 
 # =========================
-# SIDEBAR (your sidebar)
+# SIDEBAR 
 # =========================
 with st.sidebar:
     st.markdown('<div class="sidebar-title">TONTON AI</div>', unsafe_allow_html=True)
@@ -89,14 +89,30 @@ with st.sidebar:
 
     for sug in suggestions:
         if st.button(sug):
+
+            # Add user message
             st.session_state.messages.append({
                 "role": "user",
                 "content": sug
             })
+
+            # Call AI (same as sendMessage)
+            with st.spinner("Thinking..."):
+                try:
+                    response = ask_tonton(sug)
+                except Exception:
+                    response = "⚠️ Error connecting to backend"
+
+            # Add bot response
+            st.session_state.messages.append({
+                "role": "assistant",
+                "content": response
+            })
+
             st.rerun()
 
 # =========================
-# MAIN HEADER (your welcome)
+# MAIN HEADER 
 # =========================
 if len(st.session_state.messages) == 0:
     st.markdown("""
@@ -107,7 +123,7 @@ if len(st.session_state.messages) == 0:
     """, unsafe_allow_html=True)
 
 # =========================
-# DISPLAY MESSAGES (your appendMessage)
+# DISPLAY MESSAGES
 # =========================
 for msg in st.session_state.messages:
     if msg["role"] == "user":
@@ -116,7 +132,7 @@ for msg in st.session_state.messages:
         st.markdown(f'<div class="bot-bubble">{msg["content"]}</div>', unsafe_allow_html=True)
 
 # =========================
-# INPUT (your sendMessage)
+# INPUT 
 # =========================
 user_input = st.chat_input("Ask something...")
 
@@ -151,6 +167,6 @@ if user_input and not st.session_state.is_loading:
     st.session_state.is_loading = False
 
 # =========================
-# AUTO SCROLL (Streamlit limitation workaround)
+# AUTO SCROLL 
 # =========================
 st.write("")
