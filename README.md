@@ -1,13 +1,14 @@
-*This project is a Retrieval-Augmented Generation (RAG) chatbot built using:*
+**This project is a Demo of Retrieval-Augmented Generation (RAG) chatbot using Gemini 2.5 Flash for Tonton**
 
+- The chatbot is designed to answer Tonton customer support questions using ONLY verified internal documents.
+
+Components:
 - Python 3.12
 - FAISS as a vector database
 - HuggingFace all-MiniLM-L6-v2 embeddings
 - Gemini 2.5 Flash as the LLM
 - A custom prompt for rewriting, friendliness, Bahasa Malaysia output, and structured formatting
 - Basic security guardrails
-
-The chatbot is designed to answer Tonton customer support questions using ONLY verified internal documents.
 
 **1. Project Overview**
 
@@ -49,7 +50,7 @@ The RAG workflow using Langchain:
     - For portfolio presentation
 
 **3. Security Notes**
-    - .env is ignored → API key safe
-    - Guardrails prevent harmful queries
-    - RAG prevents hallucination
-    - No external calls except to Gemini API
+- .env is ignored → API key safe
+- Guardrails prevent harmful queries
+- RAG prevents hallucination
+- No external calls except to Gemini API
