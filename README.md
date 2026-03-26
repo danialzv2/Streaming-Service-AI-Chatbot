@@ -10,6 +10,16 @@ Components:
 - A custom prompt for rewriting, friendliness, Bahasa Malaysia output, and structured formatting
 - Basic security guardrails
 
+Project Directory
+- /src - containing: 
+    - /rag - Python code for the RAG pipeline using LangChain, including vector database construction and model deployment
+    - /api - FastAPI service for deploying the RAG model
+- /rag_docs - Text documents used to populate the vector database
+- /vector_store - Stored vector database files (index.faiss and index.pkl)
+- app.py - Streamlit application for demo web deployment
+- index.html, style.css, app.js - Files for the production web frontend
+- requirements.txt - List of project dependencies to be installed
+
 **1. Project Overview**
 
 The RAG workflow using Langchain:
